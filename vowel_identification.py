@@ -118,13 +118,11 @@ class my_model():
         return new_wavs,new_labels
     def build_model(self):#类内部调用
         model = models.Sequential()
-        model.add(layers.Conv2D(32,(3,3),activation='relu',input_shape=(40,40,5)))
+        model.add(layers.Conv2D(8,(3,3),activation='relu',input_shape=(40,40,5)))
         model.add(layers.MaxPooling2D(2,2))
-        model.add(layers.Conv2D(64,(5,5),activation='relu'))
+        model.add(layers.Conv2D(16,(3,3),activation='relu'))
         model.add(layers.MaxPooling2D(2,2))
         model.add(layers.Flatten())
-        model.add(layers.Dense(32,activation='relu'))
-        #model.add(layers.Dense(32,activation='relu'))
         model.add(layers.Dense(4,activation='softmax'))
         model.compile(loss='categorical_crossentropy',
                       optimizer=optimizers.Adam(lr=self.learning_rate),
